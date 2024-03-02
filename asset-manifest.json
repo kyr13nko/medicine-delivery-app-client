@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/medicine-delivery-app-client/static/css/main.76226cce.css",
+    "main.js": "/medicine-delivery-app-client/static/js/main.3bf4edaa.js",
+    "static/js/415.3662955e.chunk.js": "/medicine-delivery-app-client/static/js/415.3662955e.chunk.js",
+    "static/js/771.a6fb3195.chunk.js": "/medicine-delivery-app-client/static/js/771.a6fb3195.chunk.js",
+    "static/js/161.b4096ff2.chunk.js": "/medicine-delivery-app-client/static/js/161.b4096ff2.chunk.js",
+    "index.html": "/medicine-delivery-app-client/index.html",
+    "main.76226cce.css.map": "/medicine-delivery-app-client/static/css/main.76226cce.css.map",
+    "main.3bf4edaa.js.map": "/medicine-delivery-app-client/static/js/main.3bf4edaa.js.map",
+    "415.3662955e.chunk.js.map": "/medicine-delivery-app-client/static/js/415.3662955e.chunk.js.map",
+    "771.a6fb3195.chunk.js.map": "/medicine-delivery-app-client/static/js/771.a6fb3195.chunk.js.map",
+    "161.b4096ff2.chunk.js.map": "/medicine-delivery-app-client/static/js/161.b4096ff2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.76226cce.css",
+    "static/js/main.3bf4edaa.js"
+  ]
+}
