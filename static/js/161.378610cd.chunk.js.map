@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/161.378610cd.chunk.js","mappings":"uJAIA,UAJqB,WACnB,OAAOA,EAAAA,EAAAA,KAAA,OAAAC,SAAK,gBACd,C","sources":["pages/ShoppingCard.jsx"],"sourcesContent":["const ShoppingCard = () => {\n  return <div>ShoppingCard</div>;\n};\n\nexport default ShoppingCard;\n"],"names":["_jsx","children"],"sourceRoot":""}
