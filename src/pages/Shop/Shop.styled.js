@@ -10,3 +10,13 @@ export const ShopsContainer = styled(Container)`
     flex-direction: row;
   }
 `;
+
+export const Content = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20vh;
+  width: 100%;
+
+  font-weight: 700;
+`;

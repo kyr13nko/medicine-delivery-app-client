@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { selectIsLoading, selectPharmacies } from '../redux/pharmacySelectors';
-import { fetchPharmacy } from '../redux/pharmacyOperations';
+import { selectIsLoading, selectPharmacies } from '../../redux/pharmacySelectors';
+import { fetchPharmacy } from '../../redux/pharmacyOperations';
 
 import PharmacyList from 'components/PharmacyList/PharmacyList';
 import MedicineList from 'components/MedicineList/MedicineList';
 
 import { Section } from 'styles/GlobalStyles';
-import { ShopsContainer } from './Shop.styled';
+import { Content, ShopsContainer } from './Shop.styled';
 import { hiddenStyles } from 'styles/visually-hidden';
 import Loader from 'components/Loader/Loader';
 
@@ -26,21 +26,17 @@ const Shop = () => {
     setSelectedPharmacy(pharmacy);
   };
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <Section>
       <ShopsContainer>
         <h2 style={hiddenStyles}>Shops</h2>
-        {isLoading ? (
-          <Loader />
+        <PharmacyList pharmacies={pharmacies} onPharmacyClick={handlePharmacyClick} />
+        {selectedPharmacy ? (
+          <MedicineList pharmacy={selectedPharmacy} />
         ) : (
-          <>
-            <PharmacyList pharmacies={pharmacies} onPharmacyClick={handlePharmacyClick} />
-            {selectedPharmacy ? (
-              <MedicineList pharmacy={selectedPharmacy} />
-            ) : (
-              <div>Choose the shop, please!</div>
-            )}
-          </>
+          <Content>Choose the shop, please!</Content>
         )}
       </ShopsContainer>
     </Section>

@@ -4,7 +4,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import Layout from './Layout/Layout';
 
 const Home = lazy(() => import('../pages/Home'));
-const Shop = lazy(() => import('../pages/Shop'));
+const Shop = lazy(() => import('../pages/Shop/Shop'));
 const ShoppingCart = lazy(() => import('../pages/ShoppingCart'));
 
 function App() {

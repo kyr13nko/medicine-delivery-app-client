@@ -6,7 +6,7 @@ export const Item = styled.li`
   text-align: center;
 
   color: ${props => (props.$isSelected ? 'white' : 'teal')};
-  background-color: ${props => (props.$isSelected ? 'teal' : 'transparent')};
+  background-color: ${props => (props.$isSelected ? 'teal' : 'white')};
 
   border: 1px solid teal;
   border-radius: 12px;

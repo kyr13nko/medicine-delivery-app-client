@@ -1,17 +1,18 @@
 import MedicineItem from 'components/MedicineItem/MedicineItem';
+import { List, Wrapper } from './MedicineList.styled';
 
 const MedicineList = ({ pharmacy }) => {
   const medicinesArr = pharmacy.medicines.map(medicine => medicine._id);
 
   return (
-    <div>
+    <Wrapper>
       <h3>{pharmacy.name}</h3>
-      <ul>
+      <List>
         {medicinesArr.map(medicine => (
           <MedicineItem key={medicine._id} medicine={medicine} />
         ))}
-      </ul>
-    </div>
+      </List>
+    </Wrapper>
   );
 };
 
