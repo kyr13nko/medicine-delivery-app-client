@@ -4,7 +4,8 @@ export const handlePending = state => {
 };
 
 export const handleFulfilled = (state, { payload }) => {
-  state.items = state.items[0]?.id === payload[0]?.id ? payload : [...state.items, ...payload];
+  state.items = payload;
+  // state.items = state.items[0]?.id === payload[0]?.id ? payload : [...state.items, ...payload];
   state.isLoading = false;
   state.error = null;
 };

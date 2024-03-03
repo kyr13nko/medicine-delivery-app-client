@@ -3,38 +3,22 @@ import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import Loader from 'components/Loader/Loader';
-
-import {
-  Container,
-  Header,
-  Navigation,
-  StyledLink,
-  MainWrapper,
-  HeaderWrapper,
-} from './Layout.styled';
+import Navigation from 'components/Navigation/Navigation';
+import { Container } from 'styles/GlobalStyles';
+import { Header } from './Layout.styled';
 
 const Layout = () => {
   return (
     <>
       <Header>
         <Container>
-          <HeaderWrapper>
-            <Navigation>
-              <StyledLink to="/">Home</StyledLink>
-              <StyledLink to="/shop">Shop</StyledLink>
-              <StyledLink to="/shopping-card">Shopping Card</StyledLink>
-            </Navigation>
-          </HeaderWrapper>
+          <Navigation />
         </Container>
       </Header>
       <main>
-        <Container>
-          <MainWrapper>
-            <Suspense fallback={<Loader />}>
-              <Outlet />
-            </Suspense>
-          </MainWrapper>
-        </Container>
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
       </main>
     </>
   );

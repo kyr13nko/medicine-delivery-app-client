@@ -5,7 +5,7 @@ import Layout from './Layout/Layout';
 
 const Home = lazy(() => import('../pages/Home'));
 const Shop = lazy(() => import('../pages/Shop'));
-const ShoppingCard = lazy(() => import('../pages/ShoppingCard'));
+const ShoppingCart = lazy(() => import('../pages/ShoppingCart'));
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="shop" element={<Shop />} />
-          <Route path="shopping-card" element={<ShoppingCard />} />
+          <Route path="shopping-cart" element={<ShoppingCart />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
       </Routes>
