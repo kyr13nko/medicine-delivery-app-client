@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import { selectCart } from '../redux/selectors';
+import { selectCartMedicines } from '../redux/selectors';
 
 import { Content, ShopsContainer } from './Pages.styled';
 import { Section } from 'styles/GlobalStyles';
@@ -8,7 +8,7 @@ import { hiddenStyles } from 'styles/visually-hidden';
 import CartForm from 'components/CartForm/CartForm';
 
 const ShoppingCart = () => {
-  const cart = useSelector(selectCart);
+  const cart = useSelector(selectCartMedicines);
 
   return (
     <Section>

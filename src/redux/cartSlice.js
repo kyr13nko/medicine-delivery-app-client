@@ -3,7 +3,13 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 const initialState = {
-  items: [],
+  medicines: [],
+  user: {
+    name: '',
+    email: '',
+    phone: '',
+    address: '',
+  },
 };
 
 export const cartSlice = createSlice({
@@ -12,11 +18,17 @@ export const cartSlice = createSlice({
   reducers: {
     addToCart: (state, { payload }) => {
       const medicineInCart = payload;
-      state.items.push(medicineInCart);
+      state.medicines.push(medicineInCart);
     },
     delFromCart: (state, { payload }) => {
       const medicineInCart = payload;
-      state.items = state.items.filter(medicine => medicine._id !== medicineInCart._id);
+      state.medicines = state.medicines.filter(medicine => medicine._id !== medicineInCart._id);
+    },
+    updateUser: (state, { payload }) => {
+      state.user = { ...state.user, ...payload };
+    },
+    resetUser: state => {
+      state.user = initialState.user;
     },
   },
 });
@@ -24,9 +36,9 @@ export const cartSlice = createSlice({
 const cartConfig = {
   key: 'cart',
   storage,
-  whitelist: ['items'],
+  whitelist: ['user', 'medicines'],
 };
 
-export const { addToCart, delFromCart } = cartSlice.actions;
+export const { addToCart, delFromCart, updateUser, resetUser } = cartSlice.actions;
 
 export const cartReducer = persistReducer(cartConfig, cartSlice.reducer);

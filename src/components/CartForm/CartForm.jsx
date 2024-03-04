@@ -1,19 +1,48 @@
-import { useSelector } from 'react-redux';
-import { selectCart } from '../../redux/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCartMedicines, selectCartUser } from '../../redux/selectors';
+import { resetUser, updateUser } from '../../redux/cartSlice';
+import { sendOrder } from '../../redux/cartOperations';
 
+import { toast } from 'react-toastify';
 import CartList from 'components/CartList/CartList';
 import { BtnWrapper, Button, Form, FormInputs, FormWrapper, Input, Label } from './CartForm.styled';
 
 const CartForm = ({ medicines }) => {
-  const cart = useSelector(selectCart);
+  const dispatch = useDispatch();
+  const cartMedicines = useSelector(selectCartMedicines);
+
+  const cartUser = useSelector(selectCartUser);
+
+  const handleInputChange = e => {
+    const { name, value } = e.target;
+    dispatch(updateUser({ [name]: value }));
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    const order = {
+      user: cartUser,
+      medicines: cartMedicines,
+    };
+
+    try {
+      dispatch(sendOrder(order));
+      toast.success('Order send successfully!');
+    } catch (error) {
+      toast.error('Something went wrong! Please, try again later!');
+    }
+
+    dispatch(resetUser());
+  };
 
   const calculateTotalPrice = () => {
-    const totalPrice = cart.reduce((total, medicine) => total + medicine.price, 0);
+    const totalPrice = cartMedicines.reduce((total, medicine) => total + medicine.price, 0);
     return parseFloat(totalPrice.toFixed(2));
   };
 
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <FormWrapper>
         <FormInputs>
           <Label>
@@ -21,8 +50,9 @@ const CartForm = ({ medicines }) => {
             <Input
               type="text"
               name="name"
-              // value={formData.name}
-              // onChange={handleInputChange}
+              value={cartUser.name}
+              onChange={handleInputChange}
+              required
             />
           </Label>
           <Label>
@@ -30,8 +60,9 @@ const CartForm = ({ medicines }) => {
             <Input
               type="email"
               name="email"
-              // value={formData.email}
-              // onChange={handleInputChange}
+              value={cartUser.email}
+              onChange={handleInputChange}
+              required
             />
           </Label>
           <Label>
@@ -39,8 +70,9 @@ const CartForm = ({ medicines }) => {
             <Input
               type="tel"
               name="phone"
-              // value={formData.phone}
-              // onChange={handleInputChange}
+              value={cartUser.phone}
+              onChange={handleInputChange}
+              required
             />
           </Label>
           <Label>
@@ -48,8 +80,9 @@ const CartForm = ({ medicines }) => {
             <Input
               type="text"
               name="address"
-              // value={formData.address}
-              // onChange={handleInputChange}
+              value={cartUser.address}
+              onChange={handleInputChange}
+              required
             />
           </Label>
         </FormInputs>
